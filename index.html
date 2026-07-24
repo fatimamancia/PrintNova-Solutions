@@ -52,6 +52,15 @@
       margin-bottom: 32px;
     }
 
+    /* Estilo para tu Logo */
+    .company-logo {
+      max-width: 170px;
+      height: auto;
+      margin-bottom: 16px;
+      display: inline-block;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
+    }
+
     .form-header h2 {
       font-size: 30px;
       font-weight: 800;
@@ -66,7 +75,7 @@
       margin-top: 6px;
     }
 
-    /* Grid para organizar el formulario en 2 columnas */
+    /* Grid para organizar el formulario */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -78,7 +87,6 @@
       flex-direction: column;
     }
 
-    /* Campos a ancho completo */
     .full-width {
       grid-column: span 2;
     }
@@ -103,7 +111,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Estilo especial para los selectores de fecha */
     input[type="date"] {
       color-scheme: dark;
     }
@@ -147,15 +154,11 @@
       background: linear-gradient(135deg, #38bdf8 0%, #4f46e5 100%);
     }
 
-    /* Adaptación para pantallas móviles */
     @media (max-width: 640px) {
       .form-grid {
         grid-template-columns: 1fr;
       }
-      .full-width {
-        grid-column: span 1;
-      }
-      button {
+      .full-width, button {
         grid-column: span 1;
       }
     }
@@ -165,20 +168,24 @@
 
   <div class="form-container">
     <div class="form-header">
+      
+      <!-- 📌 1. PEGA AQUÍ LA URL DE TU LOGO -->
+      <img src="URL_DE_TU_LOGO_AQUI" alt="PrintNova Solutions Logo" class="company-logo">
+      
       <h2>PrintNova Solutions</h2>
       <p>Formulario de Registro de Proyecto</p>
     </div>
 
-    <!-- Reemplaza la URL en 'action' por tu Webhook de n8n -->
+    <!-- 📌 2. PEGA AQUÍ TU WEBHOOK URL DE N8N EN action="..." -->
     <form action="TU_WEBHOOK_URL_DE_N8N" method="POST" class="form-grid">
       
-      <!-- 1. Fecha de Solicitud -->
+      <!-- 1. Fecha -->
       <div class="form-group">
         <label for="fecha">Fecha</label>
         <input type="date" id="fecha" name="fecha" required>
       </div>
 
-      <!-- 2. Nombre Completo -->
+      <!-- 2. Nombre -->
       <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
@@ -208,16 +215,17 @@
         <input type="text" id="proyecto" name="proyecto" placeholder="Nombre del proyecto" required>
       </div>
 
-      <!-- 7. Categoría -->
+      <!-- 7. Categoría (Listado desplegable) -->
       <div class="form-group">
         <label for="categoria">Categoría</label>
         <select id="categoria" name="categoria" required>
-          <option value="" disabled selected>Selecciona categoría</option>
+          <option value="" disabled selected>Selecciona una opción</option>
           <option value="Impresión 3D">Impresión 3D</option>
-          <option value="Corte Láser">Corte Láser</option>
-          <option value="Impresión Digital">Impresión Digital</option>
-          <option value="Diseño Cad">Diseño CAD</option>
-          <option value="Otro">Otro</option>
+          <option value="Corte y Grabado Láser">Corte y Grabado Láser</option>
+          <option value="Impresión Gran Formato">Impresión Gran Formato</option>
+          <option value="Promocionales / Merchandising">Promocionales / Merchandising</option>
+          <option value="Diseño CAD / Modelado">Diseño CAD / Modelado</option>
+          <option value="Otro">Otro Servicio</option>
         </select>
       </div>
 
@@ -242,10 +250,10 @@
       <!-- 11. Medidas -->
       <div class="form-group">
         <label for="medidas">Medidas</label>
-        <input type="text" id="medidas" name="medidas" placeholder="Ej. 30x40 cm / 100mm">
+        <input type="text" id="medidas" name="medidas" placeholder="Ej. 30x40 cm">
       </div>
 
-      <!-- 12. Fecha de entrega -->
+      <!-- 12. Fecha de Entrega -->
       <div class="form-group">
         <label for="fecha_entrega">Fecha de Entrega</label>
         <input type="date" id="fecha_entrega" name="fecha_entrega" required>
@@ -267,8 +275,8 @@
     </form>
   </div>
 
-  <!-- Script simple para autocompletar la fecha de hoy por defecto -->
   <script>
+    // Coloca la fecha de hoy automáticamente en el primer campo de fecha
     document.getElementById('fecha').valueAsDate = new Date();
   </script>
 </body>
