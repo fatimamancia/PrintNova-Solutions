@@ -52,13 +52,16 @@
       margin-bottom: 32px;
     }
 
-    /* Estilo para el Logo */
+     /* Estilo para ajustar el Logo/Banner */
     .company-logo {
-      max-width: 80px;
-      height: auto;
-      margin-bottom: 16px;
-      display: inline-block;
+      width: 100%;
+      max-width: 280px; /* Ancho máximo en pantalla */
+      max-height: 120px; /* Alto máximo para que no ocupe mucho verticalmente */
+      object-fit: contain; /* Ajusta la imagen sin deformarla */
+      margin: 0 auto 16px auto;
+      display: block;
       filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+    }
     }
 
     .form-header h2 {
