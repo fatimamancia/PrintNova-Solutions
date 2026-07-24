@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Pedidos - PrintNova</title>
+  <style>
+    :root {
+      --primary-color: #4F46E5;
+      --primary-hover: #4338CA;
+      --bg-color: #F3F4F6;
+      --card-bg: #FFFFFF;
+      --text-color: #1F2937;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .form-card {
+      background-color: var(--card-bg);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-header h2 {
+      margin: 0;
+      color: var(--primary-color);
+      font-size: 28px;
+    }
+
+    .form-header p {
+      color: #6B7280;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #D1D5DB;
+      border-radius: 8px;
+      font-size: 15px;
+      box-sizing: border-box;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-card">
+    <div class="form-header">
+      <h2>PrintNova Solutions</h2>
+      <p>Completa el formulario para procesar tu solicitud</p>
+    </div>
+
+    <!-- Reemplaza el 'action' con la URL de tu nodo Webhook en n8n -->
+    <form action="TU_WEBHOOK_URL_DE_N8N" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana García" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" placeholder="ana@ejemplo.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="servicio">Servicio Requerido</label>
+        <select id="servicio" name="servicio">
+          <option value="Impresión 3D">Impresión 3D</option>
+          <option value="Corte Láser">Corte Láser</option>
+          <option value="Diseño CAD">Diseño CAD</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="detalles">Detalles del Pedido</label>
+        <textarea id="detalles" name="detalles" rows="4" placeholder="Describe las especificaciones de tu proyecto..."></textarea>
+      </div>
+
+      <button type="submit">Enviar Solicitud</button>
+    </form>
+  </div>
+
+</body>
+</html>
+```eof
+
+He creado una plantilla de formulario personalizada con CSS para adaptar colores, sombras y tipografías.
+
+### ¿Cómo usarlo con n8n?
+1. En tu flujo de n8n, reemplaza el nodo **Form Trigger** por el nodo **Webhook Trigger**.
+2. Configura el método del Webhook en `POST`.
+3. Copia la URL del Webhook que te genera n8n y pégala en el atributo `action="..."` del código HTML.
+4. ¡Listo! Puedes alojar este HTML en cualquier servidor, GitHub Pages o integrarlo en tu sitio web.
